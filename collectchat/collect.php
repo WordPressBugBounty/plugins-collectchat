@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Collect.chat - Chatbot
- * Version: 2.4.4
+ * Version: 2.4.5
  * Plugin URI: https://collect.chat
  * Description: Chatbots are the simplest, easiest way to collect leads & data from visitors. Create free chatbot without coding using Collect.chat. Never miss an opportunity by engaging every site visitor.
  * Author: Collect.chat Inc.
@@ -26,6 +26,8 @@ if (!class_exists('ScriptLoader'))
 
         function __construct()
         {
+            // Add text domain loading
+            add_action('init', array($this, 'load_plugin_textdomain'));
 
             add_action('admin_init', array(&$this,
                 'admin_init'
@@ -71,6 +73,15 @@ if (!class_exists('ScriptLoader'))
 
         }
 
+        // Add new method to load text domain
+        public function load_plugin_textdomain() {
+            load_plugin_textdomain(
+                'collectchat',
+                false,
+                dirname(plugin_basename(__FILE__)) . '/languages/'
+            );
+        }
+
         function register_embed()
         {
             //Register shortcode
@@ -110,8 +121,8 @@ if (!class_exists('ScriptLoader'))
 
         function collectchat_settings_link($links)
         {
-            $settings_link = '<a href="options-general.php?page=collectchat">' . __('Settings') . '</a>';
-            $support_link = '<a href="https://help.collect.chat" target="_blank">' . __('Support') . '</a>';
+            $settings_link = '<a href="options-general.php?page=collectchat">' . __('Settings', 'collectchat') . '</a>';
+            $support_link = '<a href="https://help.collect.chat" target="_blank">' . __('Support', 'collectchat') . '</a>';
 
             array_push($links, $settings_link);
             array_push($links, $support_link);
@@ -133,11 +144,11 @@ if (!class_exists('ScriptLoader'))
 			<div class="notice notice-error" style="display: flex;">
 					<a href="https://collect.chat" class="logo" style="margin: auto;"><img src="https://collect.chat/assets/images/logo-black.png" width="60px" height="60px"  alt="Collect.chat"/></a>
 					<div style="flex-grow: 1; margin: 15px 15px;">
-						<h4 style="margin: 0;">Add chatbot snippet to continue</h4>
-						<p><?php echo __('Oops!😓 It appears that your Collect.chat chatbot is not configured correctly.', 'collectchat'); ?></p>
+						<h4 style="margin: 0;"><?php _e('Add chatbot snippet to continue', 'collectchat'); ?></h4>
+						<p><?php _e('Oops!😓 It appears that your Collect.chat chatbot is not configured correctly.', 'collectchat'); ?></p>
 					</div>
-					    <a href="https://dashboard.collect.chat/getstarted?user=<?php echo __(wp_get_current_user()->user_email, 'collectchat'); ?>&source=wordpress" target="_blank" class="button button-primary" style="margin: auto 15px; background-color: #208a46; border-color: #208a46; text-shadow: none; box-shadow: none;">Create a free account</a>
-					    <a href="admin.php?page=collectchat" class="button button-primary" style="margin: auto 15px; background-color: #f16334; border-color: #f16334; text-shadow: none; box-shadow: none;">Add the bot snippet</a>
+					    <a href="https://dashboard.collect.chat/getstarted?user=<?php echo esc_attr(wp_get_current_user()->user_email); ?>&source=wordpress" target="_blank" class="button button-primary" style="margin: auto 15px; background-color: #208a46; border-color: #208a46; text-shadow: none; box-shadow: none;"><?php _e('Create a free account', 'collectchat'); ?></a>
+					    <a href="admin.php?page=collectchat" class="button button-primary" style="margin: auto 15px; background-color: #f16334; border-color: #f16334; text-shadow: none; box-shadow: none;"><?php _e('Add the bot snippet', 'collectchat'); ?></a>
             </div>
 		<?php
             }
