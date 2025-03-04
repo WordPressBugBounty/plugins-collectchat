@@ -13,7 +13,7 @@ if ( ! function_exists( 'collectchat_feedback_include_init' ) ) {
 		$wp_plugins_dir = defined( 'WP_PLUGIN_DIR' ) ? WP_PLUGIN_DIR : $wp_content_dir . '/plugins';
 
 		$collectchat_dir                    = $wp_plugins_dir . '/' . dirname( $base ) . '/plugin.php';
-		$collectchat_active_plugin[ $base ] = get_plugin_data( $wp_plugins_dir . '/' . $base );
+		$collectchat_active_plugin[ $base ] = get_plugin_data( $wp_plugins_dir . '/' . $base , false, false );
 
 		require_once( dirname( __FILE__ ) . '/feedback-form.php' );
 
