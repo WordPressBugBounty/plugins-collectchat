@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Collect.chat - Chatbot
- * Version: 2.4.8
+ * Version: 2.4.9
  * Plugin URI: https://collect.chat
  * Description: Chatbots are the simplest, easiest way to collect leads & data from visitors. Create free chatbot without coding using Collect.chat. Never miss an opportunity by engaging every site visitor.
  * Author: Collect.chat Inc.
@@ -326,6 +326,9 @@ if (!class_exists('ScriptLoader'))
 
         }
 
+        // only users with unfiltered_html capability can save scripts
+        if (!current_user_can('unfiltered_html')) return $post_id;
+
         $current_data = get_post_meta($post_id, '_inpost_head_script', true);
 
         $new_data = $_POST['_inpost_head_script'];
@@ -383,9 +386,9 @@ if (!class_exists('ScriptLoader'))
                         unset($arr[$i]);
                     } else {
                         if (current_user_can('unfiltered_html')) {
-                            $arr[$i] = wp_kses($v, $allowed_html); // Script sanitization for users with the unfiltered_html capability
+                            $arr[$i] = wp_kses($v, $allowed_html);
                         } else {
-                            return wp_kses_post($v); // Sanitize all content for other users
+                            $arr[$i] = wp_kses_post($v);
                         }
                     }
                 }

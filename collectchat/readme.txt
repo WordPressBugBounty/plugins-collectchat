@@ -3,7 +3,7 @@ Contributors: collectchat
 Tags: chatbot, bot, chat bot, lead generation, chat widget
 Requires at least: 4.5.0
 Tested up to: 6.9
-Stable tag: 2.4.8
+Stable tag: 2.4.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -452,6 +452,10 @@ Tested on WordPress 5.4
 = 2.4.7 =
 * Support for WordPress 6.8.2
 * Bug fixes
+
+= 2.4.9 =
+* Security fix: Stored XSS vulnerability remediation
+* Enforce server-side capability checks for script meta fields
 
 = 2.4.8 =
 * Support for WordPress 6.9
