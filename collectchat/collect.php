@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Collect.chat - Chatbot
- * Version: 2.4.9
+ * Version: 2.5.0
  * Plugin URI: https://collect.chat
  * Description: Chatbots are the simplest, easiest way to collect leads & data from visitors. Create free chatbot without coding using Collect.chat. Never miss an opportunity by engaging every site visitor.
  * Author: Collect.chat Inc.
@@ -167,6 +167,7 @@ if (!class_exists('ScriptLoader'))
                     if($days >= 7){
                         $cc_new_URI = $_SERVER['REQUEST_URI'];
                         $cc_new_URI = add_query_arg('collectchat-ignore-notice', '0', $cc_new_URI);
+                        $cc_new_URI = esc_url($cc_new_URI);
                         echo '<div class="notice notice-success">';
                         echo '<div style="display:flex;"><a href="https://collect.chat" class="logo" style="margin: auto;"><img src="https://collectcdn.com/assets/heart.gif" width="60px" height="60px"  alt="Collect.chat"/></a>';
                         printf(__('<div style="flex-grow:1;margin: 15px;"><h4 style="margin: 0;">Awesome! You have been using <a href="admin.php?page=collectchat">Collect.chat</a> chatbot plugin for more than 1 week 😎</h4>
