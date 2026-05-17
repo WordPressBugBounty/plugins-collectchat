@@ -2,8 +2,8 @@
 Contributors: collectchat 
 Tags: chatbot, bot, chat bot, lead generation, chat widget
 Requires at least: 4.5.0
-Tested up to: 6.9
-Stable tag: 2.5.0
+Tested up to: 7.0
+Stable tag: 2.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -333,6 +333,9 @@ Please go to help.collect.chat and see if your questions are already answered. W
 2. WordPress settings page.
  
 == Changelog ==
+= 2.5.1 =
+* Support for WordPress 7.0
+
 = 2.5.0 =
 * Security improvements
 
@@ -459,6 +462,9 @@ Tested on WordPress 5.4
 = 2.4.9 =
 * Security fix: Stored XSS vulnerability remediation
 * Enforce server-side capability checks for script meta fields
+
+= 2.5.1 =
+* Support for WordPress 7.0
 
 = 2.5.0 =
 * Security improvements
